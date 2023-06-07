@@ -1,0 +1,46 @@
+<!-- #4 -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <script src="js.js"></script>
+    <title>JS-4</title>
+</head>
+<body>
+    <form>
+        <p>Первое число: <input type="number" name="value1" id="input1"></p>
+        <p>Второе число: <input type="number" name="value2" id="input2"></p>
+    </form>
+    <input type="submit" value="Отправить" id="submit">
+    <div id="div-output"></div>
+    <script>
+        const div = document.getElementById("div-output");
+        const btn = document.getElementById("submit");
+        const useRequest = (value1, value2) => {
+            return fetch(`https://picsum.photos/${value1}/${value2}`)
+            // return fetch(`https://fakeimg.pl/${value1}x${value2}`)
+            .then((response) => {
+                return response.url;
+            })
+            .then((url) => { return url; })
+            .catch(() => { console.log("error") });
+        };
+        async function displayResult(value1, value2){
+            let apiData = '';
+            cards = '';
+            apiData = await useRequest(value1, value2);
+            cards += `<img src="${apiData}"/>`;                   
+            div.innerHTML = cards;
+        }
+        btn.addEventListener("click", async () => {
+            const value1 = document.getElementById("input1").value;
+            const value2 = document.getElementById("input2").value;
+            if ((value1 < 100 || value1 > 300) || (value2 < 100 || value2 > 300)){
+                div.innerHTML = "число вне диапазона от 100 до 300";
+            } else {
+                displayResult(value1, value2);
+            }
+        });
+    </script>
+</body>
+</html>

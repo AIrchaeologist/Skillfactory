@@ -1,0 +1,58 @@
+<!-- #5 -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <script src="js.js"></script>
+    <title>JS-5</title>
+</head>
+<body>
+    <form>
+        <p>Номер страницы: <input type="number" name="input1" id="input1"></p>
+        <p>Лимит: <input type="number" name="input2" id="input2"></p>
+    </form>
+    <input type="submit" value="Запрос" id="submit">
+    <div id="div-output"></div>
+    <script>
+        const btn = document.getElementById("submit");
+        const div = document.getElementById("div-output");
+        let cards = '';
+        cards = localStorage.getItem("cards");
+        if (cards){
+            div.innerHTML = cards;
+        };
+        const useRequest = (value1, value2) => {
+            return fetch(`https://picsum.photos/v2/list?page=${value1}&limit=${value2}`)
+            // return fetch(`https://fakeimg.pl/${value1}x${value2}`)
+            .then((response) => {
+                return response.url;
+            })
+            .then((url) => { return url; })
+            .catch(() => { console.log("error") });
+        };
+        async function displayResult(value1, value2){
+            let apiData = '';
+            cards = '';
+            apiData = await useRequest(value1, value2);
+            cards += `<img src="${apiData}"/>`;
+
+            localStorage.removeItem('cards');
+            localStorage.setItem('cards', cards);                    
+            div.innerHTML = cards;
+        }
+        btn.addEventListener("click", () => {
+            const value1 = document.getElementById("input1").value;
+            const value2 = document.getElementById("input2").value;
+            if ((value1 < 1 || value1 > 10) && (value2 < 1 || value2 > 10)) {
+                div.innerHTML = "Номер страницы и лимит вне диапазона от 1 до 10";
+            } else if (value1 < 1 || value1 > 10) {
+                div.innerHTML = "Номер страницы вне диапазона от 1 до 10";
+            } else if (value2 < 1 || value2 > 10) {
+                div.innerHTML = "Лимит вне диапазона от 1 до 10";
+            } else {
+                displayResult(value1, value2);
+            }
+        });
+    </script>
+</body>
+</html>
