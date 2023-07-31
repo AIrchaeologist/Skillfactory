@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.div__input {
+    width: 520px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    position: fixed;
+    z-index: 100;
+    background-color: #ffff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.div__input-text {
+    width: 470px;
+    height: 50px;
+    font-size: 20pt;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid;
+    outline:none;
+    outline-offset: 0;
+}
+.div__input-text::placeholder {
+    color: #212529;
+    opacity: 0.4;
+}
+.div__input_button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: initial;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.div__input_button:hover {
+    box-shadow: 0 0 10px #9ecaed;
+}
+.div__input_geo-button {
+    width: 130px;
+    height: 30px;
+    font-size: 12pt;
+    background-color: initial;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.div__input_geo-button:hover {
+    box-shadow: 0 0 10px #9ecaed;
+}
+.div__output {
+    width: 520px;
+    min-height: 500px;
+    margin-top: 250px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: scroll;
+    padding: 10px;
+}
+.div__output_message {
+    box-shadow: 0 0 10px #40E0D0;
+    width: 350px;
+    min-height: 50px;
+    margin-left: auto;
+    margin-right: 0;
+    padding: 5px;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+.div__output_answer {
+    box-shadow: 0 0 10px #9ecaed;
+    width: 350px;
+    min-height: 50px;
+    margin-left: 0;
+    margin-right: auto;
+    padding: 5px;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+.div__output_p {
+    font-size: 8pt;
+    font-style: strong;
+    margin: 0;
+    opacity: 0.4;
+}

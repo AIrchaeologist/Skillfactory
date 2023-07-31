@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button {
+    width: 120px;
+    height: 120px;
+    border-style: dotted;
+    border-radius: 100px;
+    background-color: initial;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.button:hover {
+    box-shadow: 0 0 10px #9ecaed;
+}
+.button__div-first {
+    width: 100px;
+    height: 100px;
+}
